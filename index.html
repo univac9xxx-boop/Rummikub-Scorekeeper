@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rummikub Scorekeeper v1.0</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Rummikub Scorekeeper</h1>
+
+    <h2>Player Manager</h2>
+
+    <div id="playerList">
+
+        <div class="playerRow">
+            <input type="text" placeholder="Player Name">
+            <button class="deleteButton">Delete</button>
+        </div>
+
+    </div>
+
+    <button id="addPlayerButton">
+        + Add Player
+    </button>
+
+    <hr>
+
+    <button id="startSessionButton">
+        Start Session
+    </button>
+
+    <p id="statusMessage"></p>
+
+    <div id="gameArea">
+
+        <h2 id="gameTitle">Game 1</h2>  
+        
+        <label for="winner">
+            Winner
+        </label>
+
+        <select id="winner">
+            <option>Select Winner</option>
+        </select>
+
+        <h3>Tile Totals</h3>
+
+        <div id="tileTotals">
+        </div>
+
+    <button id="recordGameButton">
+        Record Game
+    </button>
+
+    
+
+    </div>
+
+    <hr>
+
+    <div id="standings">
+
+    <h2>Game History</h2>
+
+    <table id="historyTable" border="1" cellpadding="6">
+
+        <thead>
+            <tr id="historyHeader">
+                <th>Game</th>
+            </tr>
+        </thead>
+
+        <tbody id="historyBody">
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <h2>Running Totals</h2>
+
+    <div id="totalsArea">
+        No games have been recorded.
+    </div>
+
+</div>
+<footer id="footer">
+    Version 1.0<br>
+    © 2026 Lois & Steve
+</footer>
+<script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(function () {
+                console.log("Service Worker registered.");
+            })
+            .catch(function (error) {
+                console.log("Service Worker failed:", error);
+            });
+    });
+}
+</script>
+</body>
+</html>
