@@ -118,11 +118,20 @@ function recordGame() {
 
     const winner = document.getElementById("winner").value;
 
-    if (winner === "") {
-        alert("Please select a winner.");
+
+    if (winner === "Choose Winner") {
+        alert("Please select a winner before recording the game.");
         return;
     }
+const scoreBoxes = document.querySelectorAll(".tileValue");
 
+for (const box of scoreBoxes) {
+    if (box.value.trim() === "") {
+        alert("Please enter a score for " + box.dataset.player + ".");
+        box.focus();
+        return;
+    }
+}
     const historyHeader = document.getElementById("historyHeader");
     const historyBody = document.getElementById("historyBody");
     const totalsArea = document.getElementById("totalsArea");
@@ -146,8 +155,6 @@ function recordGame() {
     let html = `<td>${gameNumber}</td>`;
 
     let winnerScore = 0;
-
-    const scoreBoxes = document.querySelectorAll(".tileValue");
 
     const playerScores = {};
 
