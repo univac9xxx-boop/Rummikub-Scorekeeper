@@ -60,9 +60,9 @@ startSessionButton.addEventListener("click", function () {
 
             const option = document.createElement("option");
 
-            option.text = player.value;
+            option.text = player.value.trim();
 
-            option.value = player.value;
+            option.value = player.value.trim();
 
             winnerSelect.add(option);
 
