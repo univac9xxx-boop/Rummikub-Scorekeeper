@@ -1,112 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rummikub Scorekeeper v1.0</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#003366">
+  <title>Rummikub Scorekeeper</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div class="container">
-
+  <main class="container">
     <h1>Rummikub Scorekeeper</h1>
+    <p class="intro">A simple way for Lois &amp; Steve to keep score.</p>
 
-    <h2>Player Manager</h2>
-
-    <div id="playerList">
-
+    <section id="playerSetup" class="panel">
+      <h2>Player Manager</h2>
+      <div id="playerList">
         <div class="playerRow">
-            <input type="text" placeholder="Player Name">
-            <button class="deleteButton">Delete</button>
+          <input type="text" placeholder="Player Name" aria-label="Player 1 name">
+          <button type="button" class="deleteButton secondary">Remove</button>
         </div>
+        <div class="playerRow">
+          <input type="text" placeholder="Player Name" aria-label="Player 2 name">
+          <button type="button" class="deleteButton secondary">Remove</button>
+        </div>
+      </div>
+      <div class="buttonRow">
+        <button type="button" id="addPlayerButton" class="secondary">+ Add Player</button>
+        <button type="button" id="startSessionButton">Start Session</button>
+      </div>
+      <p class="hint">Enter at least two player names. Starting a new session clears the previous session after confirmation.</p>
+    </section>
 
-    </div>
-
-    <button id="addPlayerButton">
-        + Add Player
-    </button>
-
-    <hr>
-
-    <button id="startSessionButton">
-        Start Session
-    </button>
-
-    <p id="statusMessage"></p>
-
-    <div id="gameArea">
-
-        <h2 id="gameTitle">Game 1</h2>  
-        
-        <label for="winner">
-            Winner
-        </label>
-
+    <section id="gameArea" class="panel" hidden>
+      <div class="sectionHeading">
+        <h2 id="gameTitle">Game 1</h2>
+        <button type="button" id="newSessionButton" class="secondary smallButton">New Session</button>
+      </div>
+      <div class="formRow">
+        <label for="winner">Winner</label>
         <select id="winner">
-            <option>Select Winner</option>
+          <option value="">Choose Winner</option>
         </select>
+      </div>
+      <h3>Tile Totals</h3>
+      <p class="hint">Enter the tiles left for each player who did not win.</p>
+      <div id="tileTotals"></div>
+      <div class="buttonRow entryButtons">
+        <button type="button" id="recordGameButton">Record Game</button>
+        <button type="button" id="clearEntryButton" class="secondary">Clear Current Entry</button>
+        <button type="button" id="cancelEditButton" class="secondary" hidden>Cancel Edit</button>
+      </div>
+      <p id="statusMessage" role="status" aria-live="polite"></p>
+    </section>
 
-        <h3>Tile Totals</h3>
+    <section id="standings" class="panel" hidden>
+      <div class="sectionHeading historyHeading">
+        <h2>Game History</h2>
+        <button type="button" id="undoButton" class="secondary smallButton">Undo Last Game</button>
+      </div>
+      <div class="tableWrap">
+        <table id="historyTable">
+          <thead><tr id="historyHeader"><th>Game</th></tr></thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+      <h2>Running Totals</h2>
+      <div id="totalsArea" class="totalsGrid"></div>
+      <p class="hint">Scores are saved automatically on this device. Editing or deleting an older game recalculates all totals.</p>
+    </section>
 
-        <div id="tileTotals">
-        </div>
-
-    <button id="recordGameButton">
-        Record Game
-    </button>
-
-    
-
-    </div>
-
-    <hr>
-
-    <div id="standings">
-
-    <h2>Game History</h2>
-
-    <table id="historyTable" border="1" cellpadding="6">
-
-        <thead>
-            <tr id="historyHeader">
-                <th>Game</th>
-            </tr>
-        </thead>
-
-        <tbody id="historyBody">
-        </tbody>
-
-    </table>
-
-    <br>
-
-    <h2>Running Totals</h2>
-
-    <div id="totalsArea">
-        No games have been recorded.
-    </div>
-
-</div>
-<footer id="footer">
-    Version 1.1<br>
-    © 2026 Lois & Steve
-</footer>
-<script src="script.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('./service-worker.js')
-            .then(function () {
-                console.log("Service Worker registered.");
-            })
-            .catch(function (error) {
-                console.log("Service Worker failed:", error);
-            });
-    });
-}
-</script>
+    <footer id="footer">Version 2.1<br>© 2026 Lois &amp; Steve</footer>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./service-worker.js').catch(function (error) {
+          console.log('Service Worker registration failed:', error);
+        });
+      });
+    }
+  </script>
 </body>
 </html>

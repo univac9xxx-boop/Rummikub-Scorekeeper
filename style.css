@@ -1,84 +1,64 @@
-/* ==========================================
-   Rummikub Scorekeeper v1.0
-   Style Sheet
-========================================== */
-
+* { box-sizing: border-box; }
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  color: #222;
 }
-
 .container {
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0,0,0,.15);
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 26px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,.13);
 }
-
-h1 {
-    text-align: center;
-    color: #003366;
-    margin-bottom: 30px;
-}
-
-h2 {
-    color: #004b8d;
-    border-bottom: 2px solid #dddddd;
-    padding-bottom: 6px;
-}
-
-.playerRow {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.playerRow input {
-    flex: 1;
-}
-
-input,
-select {
-    padding: 10px;
-    font-size: 16px;
-}
-
-button {
-    padding: 10px 18px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 6px;
-    border: none;
-    background-color: #0059b3;
-    color: white;
-}
-
-button:hover {
-    background-color: #003d80;
-}
-
-#addPlayerButton,
-#startSessionButton,
-#recordGameButton {
-    margin-top: 15px;
-}
-
-#gameArea,
-#standings {
-    margin-top: 30px;
-}
-
-hr {
-    margin: 30px 0;
-}
-#footer {
-    text-align: center;
-    color: #777;
-    font-size: 12px;
-    margin-top: 30px;
-    margin-bottom: 10px;
+h1 { text-align: center; color: #003366; margin: 0 0 6px; }
+.intro { text-align: center; color: #666; margin: 0 0 26px; }
+h2 { color: #004b8d; border-bottom: 2px solid #ddd; padding-bottom: 7px; margin-top: 0; }
+h3 { color: #244b70; margin-bottom: 8px; }
+.panel { margin-top: 22px; padding: 18px; border: 1px solid #e2e7ec; border-radius: 10px; }
+.playerRow { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
+.playerRow input { flex: 1; min-width: 0; }
+input, select { padding: 11px; font-size: 16px; border: 1px solid #aaa; border-radius: 5px; }
+button { padding: 11px 17px; font-size: 15px; cursor: pointer; border: 0; border-radius: 6px; background: #0059b3; color: white; }
+button:hover { background: #003d80; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #83bfff; outline-offset: 2px; }
+button.secondary { background: #687887; }
+button.secondary:hover { background: #4c5a66; }
+button.danger { background: #a83232; }
+button.danger:hover { background: #7f2020; }
+button.smallButton { padding: 8px 12px; font-size: 14px; }
+.buttonRow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.sectionHeading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.sectionHeading h2 { flex: 1; }
+.formRow { display: flex; align-items: center; gap: 14px; margin: 12px 0 20px; }
+.formRow label { font-weight: bold; min-width: 70px; }
+.formRow select { min-width: 220px; }
+#tileTotals .playerRow label { width: 180px; font-weight: 600; }
+#tileTotals .playerRow input { max-width: 180px; }
+.hint { color: #666; font-size: 13px; line-height: 1.45; }
+#statusMessage { min-height: 20px; color: #245b2b; font-weight: 600; }
+.tableWrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 24px; }
+th, td { border: 1px solid #cbd2d9; padding: 9px; text-align: center; white-space: nowrap; }
+th { background: #eaf1f8; color: #173c60; }
+td.actions { display: flex; gap: 6px; justify-content: center; }
+.totalsGrid { display: flex; flex-wrap: wrap; gap: 10px; }
+.totalCard { background: #eef4fa; border: 1px solid #d2dfeb; border-radius: 7px; padding: 12px 16px; min-width: 130px; }
+.totalCard strong { display: block; color: #003366; margin-bottom: 4px; }
+#footer { text-align: center; color: #777; font-size: 12px; margin: 28px 0 4px; }
+[hidden] { display: none !important; }
+@media (max-width: 600px) {
+  body { padding: 8px; }
+  .container { padding: 15px; }
+  .panel { padding: 13px; }
+  .sectionHeading { align-items: flex-start; }
+  .sectionHeading h2 { font-size: 20px; }
+  .formRow { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .formRow select { width: 100%; }
+  #tileTotals .playerRow label { width: 115px; }
+  #tileTotals .playerRow input { max-width: none; width: 100px; }
+  td.actions { flex-direction: column; }
 }

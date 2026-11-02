@@ -1,15 +1,8 @@
 {
   "name": "Rummikub Scorekeeper",
-  "short_name": "Rummikub",
+  "short_name": "Rummikub Scores",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f4f4f4",
-  "theme_color": "#0059b3",
-  "icons": [
-    {
-      "src": "./RummiKubIcon.png",
-      "sizes": "1254x1254",
-      "type": "image/png"
-    }
-  ]
+  "theme_color": "#003366"
 }
